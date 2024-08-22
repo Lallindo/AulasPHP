@@ -16,8 +16,12 @@
         <br><br>
         <label for="cpf">CPF:</label>
         <input type="text" maxlength="12" name="cpf" id="cpf" oninput="formatarCPF(this)">
+        <span id="span_error_cpf"></span>
         <br><br>
-        <input type="submit">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email">
+        <br><br>
+        <input type="submit" id="but_submit" disabled="true">
     </form>
     <script src="script.js"></script>
 </body>

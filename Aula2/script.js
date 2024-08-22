@@ -40,13 +40,13 @@ function validarCPF(cpfAtual) {
         somaDig1 += parseInt(cpfAtual[i]) * (10 - i);
     }
 
-    valor1 = 11 - (somaDig1 - (11 * Math.floor(somaDig1/11)));
+    valor1 = 11 - (somaDig1 - (11 * Math.floor(somaDig1 / 11)));
     console.log(valor1);
-    
+
     if ((valor1 == 0 || valor1 == 1) && cpfAtual[9] != 0) {
         retorno = false;
         console.log('ERRO')
-    } else if (valor1 != cpfAtual[9]){
+    } else if (valor1 != cpfAtual[9]) {
         retorno = false;
         console.log('ERRO')
     }
@@ -54,15 +54,15 @@ function validarCPF(cpfAtual) {
 
     for (i = 0; i <= 9; i++) {
         somaDig2 += parseInt(cpfAtual[i] * (11 - i));
-    } 
+    }
 
-    valor2 = 11 - (somaDig2 - (11 * Math.floor(somaDig2/11)));
+    valor2 = 11 - (somaDig2 - (11 * Math.floor(somaDig2 / 11)));
     console.log(valor2);
 
     if ((valor2 == 0 || valor2 == 1) && cpfAtual[10] != 0) {
         retorno = false;
         console.log('ERRO')
-    } else if (valor2 != cpfAtual[10]){
+    } else if (valor2 != cpfAtual[10]) {
         retorno = false;
         console.log('ERRO')
     }
@@ -71,5 +71,13 @@ function validarCPF(cpfAtual) {
         console.log('CPF inválido');
     } else {
         console.log('CPF válido');
+    }
+
+    if (retorno) {
+        document.getElementById('but_submit').disabled = false;
+        document.getElementById('span_error_cpf').innerHTML = "";
+    } else {
+        document.getElementById('but_submit').disabled = true;
+        document.getElementById('span_error_cpf').innerHTML = "CPF inválido";
     }
 }

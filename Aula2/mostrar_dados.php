@@ -5,15 +5,20 @@ if ($_POST) {
 #require "cliente.Class.php"; Produzirá um FATAL ERROR (E_COMPILE_ERROR) e para o script
     require_once "cliente.Class.php"; // '' porém é 'rodado' apenas uma vez 
 
-    $cliente1 = new Cliente();
+    $cliente1 = new Cliente(0, $_POST['nome'], $_POST['cpf'], $_POST['email']);
+    // $cliente1 = new Cliente (nome:$_POST['nome'], cpf:$_POST['cpf']) -> Dá nome ás variáveis para ignorar a ordem;
 
-    echo "<pre>";
+    // Caso apenas uma varíavel seja necessária, faça: nome_Variavel:$_POST['id_dela']; dentro dos argumentos;
+
+    /*echo "<pre>";
     var_dump($cliente1);
-    echo "</pre>";
+    echo "</pre>";*/
 
-    $cliente1->nome = $_POST['nome'];
-    $cliente1->cpf = $_POST['cpf'];
     $cliente1->mostrar_dados();
+
+    $conexao_aberta = $cliente1->conexao();
+    $mensagem = $cliente1->inserir_cliente($conexao_aberta);
+    echo $mensagem;
 
     /*
     $nome = $_POST['nome'];
@@ -23,6 +28,7 @@ if ($_POST) {
     echo "<br>";
     echo "CPF: $cpf";
     */
+
 } else {
     header("location:index.html");
     die();
