@@ -1,0 +1,10 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.coluna-id, .coluna-nome, .coluna-cpf, .coluna-email {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
