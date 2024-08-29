@@ -5,7 +5,7 @@ $conexao_aberta = $cliente->conexao();
 $retorno = $cliente->buscar_clientes($conexao_aberta);
 #var_dump($retorno);
 if($_GET) {
-    echo "<h3>{$_GET["mensagem"]}</h3>";
+    echo "<h3>{$_GET["mensagem"]}</h3><br>";
 }
 ?>
 
@@ -21,6 +21,7 @@ if($_GET) {
 
 <body>
     <h1>Clientes</h1>
+    <a href="formCliente.html">Novo Cliente</a>
     <table>
         <thead>
             <tr>
