@@ -4,46 +4,51 @@ class Cliente
 
     public function __construct(
         private int $id = 0,
-        public string $nome = '',
-        public string $cpf = '',
-        public string $email = ''
+        private string $nome = '',
+        private string $cpf = '',
+        private string $email = ''
     ) {
     }
 
-    // Atributos
-    //public $nome;
-    //public $cpf;
-
-    // Método
-    public function inserir_cliente($conexao)
+    public function getId_cliente()
     {
-        $sql = "INSERT INTO clientes (cliente_id, cliente_nome, cliente_cpf, cliente_email) VALUES (?,?,?,?)"; // Frase do SQL para adicionar ao banco;
-        $stm = $conexao->prepare($sql); // Prepara a frase, evitando injeção de SQL;
-        $stm->bindValue(1, $this->id);
-        $stm->bindValue(2, $this->nome);
-        $stm->bindValue(3, $this->cpf);
-        $stm->bindValue(4, $this->email);
-        // Substitui os pontos de interrogação na frase
-        $stm->execute(); // Executa o comando no BD;
-        return "Cliente inserido ao BD com sucesso"; // Retorna uma frase; 
+        return $this->id;
     }
 
-    public function conexao()
+    public function setId_cliente($id)
     {
-        $parametros = "mysql:host=localhost;dbname=bancophp;charset=utf8mb4"; // Informações sobre o bando de dados
-        $conexao = new PDO($parametros, "root", "");
-        return $conexao;
+        $this->id = $id;
     }
 
-    public function buscar_clientes($conexao)
+    public function getNome()
     {
-        $sql = "SELECT * FROM clientes";
-        $stm = $conexao->prepare($sql);
-        $stm->execute();
-        return $stm->fetchAll(PDO::FETCH_OBJ);
+        return $this->nome;
     }
 
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
+    }
+
+    public function getCpf()
+    {
+        return $this->cpf;
+    }
+
+    public function setCpf($cpf)
+    {
+        $this->cpf = $cpf;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
 }
-; // Fim da classe
 
 ?>
